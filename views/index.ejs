@@ -1,0 +1,29 @@
+<%- include("partials/header") %>
+
+<main>
+  <section class="search-section">
+    <form action="/" method="GET">
+      <input 
+        type="text" 
+        name="city" 
+        placeholder="Enter city name (e.g., Mumbai)" 
+        required
+      />
+      <button type="submit">Get Weather</button>
+    </form>
+  </section>
+
+  <% if (error) { %>
+    <p class="error"><%= error %></p>
+  <% } %>
+
+  <% if (weather) { %>
+    <section class="weather-card">
+      <h2><%= weather.city %></h2>
+      <p>Temperature: <%= weather.temp %> °C</p>
+      <p>Condition: <%= weather.condition %></p>
+    </section>
+  <% } %>
+</main>
+
+<%- include("partials/footer") %>
