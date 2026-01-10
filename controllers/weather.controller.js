@@ -16,13 +16,11 @@ const city = req.query.city;
       error: null
     });
   } catch (error) {
-    res.render("index", {
-      weather: null,
-      error: "City not found. Please try again."
-    });
+    next(error);
   }
 };
 
 export default {
   handleWeatherRequest
 };
+
