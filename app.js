@@ -3,6 +3,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
+import limiter from './middleware/ratelimit.middleware.js';
+import errorhandler from './middleware/error.middleware.js';
 import dotenv from 'dotenv';
 
 import weatherRoutes from './routes/weather.routes.js';
@@ -20,6 +22,9 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(morgan('dev'));
+
+app.use(errorhandler);
+app.use(limiter);
 
 app.use('/', weatherRoutes);
 
