@@ -1,5 +1,6 @@
 import axios from "axios";
 
+const weatherService = {};
 const getWeatherByCity = async (city) => {
   const API_KEY = process.env.OPENWEATHER_API_KEY;
 
@@ -25,6 +26,7 @@ const getWeatherByCity = async (city) => {
     throw err;
   }
 };
+
 
 export default {
   getWeatherByCity

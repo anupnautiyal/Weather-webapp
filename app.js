@@ -2,8 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import morgan from 'morgan';
-import rateLimit from 'express-rate-limit';
-import limiter from './middleware/ratelimit.middleware.js';
+import { limiter } from './middleware/ratelimit.middleware.js';
 import errorhandler from './middleware/error.middleware.js';
 import dotenv from 'dotenv';
 
