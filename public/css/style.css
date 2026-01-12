@@ -79,3 +79,16 @@ button:hover {
   color: #dc2626;
   margin-top: 1rem;
 }
+
+@media (max-width: 480px) {
+  .container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .extra {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+

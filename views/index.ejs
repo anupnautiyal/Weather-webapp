@@ -1,31 +1,38 @@
-<%- include("partials/header") %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🌤️ Weather App</h1>
 
-<main>
-  <section class="search-section">
     <form action="/" method="GET">
-      <input 
-        type="text" 
-        name="city" 
-        placeholder="Enter city name (e.g., Mumbai)" 
-        required
-      />
-      <button type="submit">Get Weather</button>
+      <input name="city" placeholder="Enter city" required />
+      <button type="submit">Search</button>
     </form>
-  </section>
 
-  <% if (error) { %>
-    <p class="error"><%= error %></p>
-  <% } %>
+    <% if (weather) { %>
+      <div class="weather-card" data-condition="<%= weather.condition %>">
+        <h2><%= weather.city %>, <%= weather.country %></h2>
+        <img src="https://openweathermap.org/img/wn/<%= weather.icon %>@2x.png">
+        <div class="temp"><%= weather.temp %>°C</div>
+        <div class="condition"><%= weather.condition %></div>
 
-  <% if (weather) { %>
-    <section class="weather-card">
-      <h2><%= weather.city %></h2>
-      <p>Temperature: <%= weather.temp %> °C</p>
-      <p>Condition: <%= weather.condition %></p>
-      <p>Humidity: <%= weather.humidity %> %</p>
-      <p>Wind Speed: <%= weather.wind %> m/s</p>
-    </section>
-  <% } %>
-</main>
+        <div class="extra">
+          <div>💧 <%= weather.humidity %>%</div>
+          <div>💨 <%= weather.wind %> m/s</div>
+        </div>
+      </div>
+    <% } %>
 
-<%- include("partials/footer") %>
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+  </div>
+
+  <script src="/js/theme.js"></script>
+</body>
+</html>
